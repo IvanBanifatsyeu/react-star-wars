@@ -1,8 +1,9 @@
-import cn from "classnames";
 import styles from "./App.module.css";
 
+import { getApiResource } from "../../utils/network";
+
 const App = () => {
-	console.log(typeof styles);
-	return <h1 className={cn(styles.header, styles.text)}>Hello gggg</h1>;
+
+	return <h1 className={styles.header}>Hello</h1>;
 };
 export default App;
