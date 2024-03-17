@@ -1,9 +1,9 @@
-import styles from "./App.module.css";
+import PeoplePage from "../PeoplePage";
 
-import { getApiResource } from "../../utils/network";
+import styles from "./App.module.css";
 
 const App = () => {
 
-	return <h1 className={styles.header}>Hello</h1>;
+	return <PeoplePage />
 };
 export default App;
