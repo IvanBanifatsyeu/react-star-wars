@@ -1,7 +1,6 @@
 import styles from "./PeopleList.module.css";
 
 const PeopleList = ({ people }) => {
-     console.log(people)
 	return (
 		<ul className={styles.list__container}>
 			{people.map(({ name, url, id, urlImg }) => (

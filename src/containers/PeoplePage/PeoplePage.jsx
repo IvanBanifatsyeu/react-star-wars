@@ -2,16 +2,16 @@ import { useState, useEffect } from "react";
 import { getApiResource } from "../../utils/network";
 import { API_PEOPLE } from "../../constants/api";
 import { getPeopleId, getPeopleImg } from "../../services/getPeopleData";
+import { withErrorApi } from "../../hoc/withErrorApi";
 import PeopleList from "../../components/PeoplePage/PeopleList";
 
 import styles from "./PeoplePage.module.css";
 
-const PeoplePage = () => {
+const PeoplePage = ({ setErrorApi }) => {
 	const [people, setPeople] = useState(null);
-	const [errorApi, setErrorApi] = useState(false);
 
 	const getResource = async (url) => {
-		const res = await getApiResource(url);
+		const res = await getApiResource(url );
 
 		if (res) {
 			const peopleList = res.results.map(({ name, url }) => {
@@ -32,16 +32,9 @@ const PeoplePage = () => {
 
 	return (
 		<>
-			{errorApi ? (
-				<h2>Error</h2>
-			) : (
-				<>
-					<h1>Navigation</h1>
-					{console.log(people)}
-					{people && <PeopleList people={people} />}
-				</>
-			)}
+			<h1>Navigation</h1>
+			{people && <PeopleList people={people} />}
 		</>
 	);
 };
-export default PeoplePage;
+export default withErrorApi(PeoplePage);
