@@ -8,22 +8,40 @@ import styles from "./PeoplePage.module.css";
 
 const PeoplePage = () => {
 	const [people, setPeople] = useState(null);
+	const [errorApi, setErrorApi] = useState(false);
 
 	const getResource = async (url) => {
 		const res = await getApiResource(url);
 
-		const peopleList = res.results.map(({ name, url }) => {
-			const id = getPeopleId(url);
-			const urlImg = getPeopleImg(id);
-			return { name, url, id, urlImg };
-		});
-		setPeople(peopleList);
+		if (res) {
+			const peopleList = res.results.map(({ name, url }) => {
+				const id = getPeopleId(url);
+				const urlImg = getPeopleImg(id);
+				return { name, url, id, urlImg };
+			});
+			setPeople(peopleList);
+			setErrorApi(false);
+		} else {
+			setErrorApi(true);
+		}
 	};
 
 	useEffect(() => {
 		getResource(API_PEOPLE);
 	}, []);
 
-	return <>{people && <PeopleList people={people} />}</>;
+	return (
+		<>
+			{errorApi ? (
+				<h2>Error</h2>
+			) : (
+				<>
+					<h1>Navigation</h1>
+					{console.log(people)}
+					{people && <PeopleList people={people} />}
+				</>
+			)}
+		</>
+	);
 };
 export default PeoplePage;
