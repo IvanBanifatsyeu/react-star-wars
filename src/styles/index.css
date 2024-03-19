@@ -2,12 +2,15 @@
   --color-dark-gray: #272725;
   --color-black: #000;
   --color-white: #fff;
+  --color-yellow: #f8f401;
 
   --spacing-medium: 20px;
 
   --font-family-main: sans-serif;
 
   --border--radius-small: 3px;
+
+  --font-size-header: 26px;
 }
 
 body {
