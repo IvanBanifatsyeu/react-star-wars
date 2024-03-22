@@ -8,6 +8,4 @@ export const getApiResource = async (url) => {
 	}
 };
 
-// (async () => {
-// 	const body = await getApiResource(SWAPI_ROOT + SWAPI_PEOPLE);
-// })();
+
