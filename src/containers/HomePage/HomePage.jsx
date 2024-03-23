@@ -1,0 +1,14 @@
+import { NavLink } from "react-router-dom";
+
+import styles from "./HomePage.module.css";
+
+const HomePage = () => {
+	return (
+		<>
+			<h1>Home page</h1>
+           
+		</>
+	);
+};
+
+export default HomePage;
