@@ -5,7 +5,7 @@ import styles from "./HomePage.module.css";
 const HomePage = () => {
 	return (
 		<>
-			<h1>Home page</h1>
+			<h1 className="header__text">Home page</h1>
            
 		</>
 	);
