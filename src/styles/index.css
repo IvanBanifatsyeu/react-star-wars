@@ -15,20 +15,31 @@
 
 	--border--radius-small: 3px;
 
+	--font-size-main: 16px;
 	--font-size-header: 26px;
 	--font-bold: 600;
 
 	--text-shadow-yeallow: 0 0 2px var(--color-white), 0 0 30px var(--color-blue);
 
 	--theme-default-header: #cccc46;
+	--theme-default-bdimage: url(@static/bd.jpg);
 }
-
 body {
 	margin: 0;
 	padding: 0;
 	background-color: var(--color-dark-gray);
 	font-family: var(--font-family-main);
+	font-size: var(--font-size-main);
 	box-sizing: border-box;
+	background-image: var(--theme-default-bdimage);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+img {
+	display: block;
 }
 
 .header__text {
