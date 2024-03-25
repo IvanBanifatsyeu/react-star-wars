@@ -3,8 +3,11 @@
 	--color-black: #000;
 	--color-white: #fff;
 	--color-yellow: #f8f401;
+	--color-blue: #6a83f3;
+	--color-violet: #ae72c2;
 
 	--spacing-medium: 20px;
+	--spacing-large: 30px;
 
 	--transition: 0.4s;
 
@@ -13,6 +16,9 @@
 	--border--radius-small: 3px;
 
 	--font-size-header: 26px;
+	--font-bold: 600;
+
+	--text-shadow-yeallow: 0 0 2px var(--color-white), 0 0 30px var(--color-blue);
 
 	--theme-default-header: #cccc46;
 }
@@ -22,6 +28,7 @@ body {
 	padding: 0;
 	background-color: var(--color-dark-gray);
 	font-family: var(--font-family-main);
+	box-sizing: border-box;
 }
 
 .header__text {
