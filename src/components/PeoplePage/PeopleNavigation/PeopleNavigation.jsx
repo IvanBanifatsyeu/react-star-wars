@@ -18,8 +18,7 @@ const PeopleNavigation = ({
 	};
 
 	return (
-		<div>
-			
+		<div className={styles.container}>
 			<Link
 				to={`/people/?page=${counterPage - 1}&limit=10`}
 				className={styles.link}
@@ -28,6 +27,7 @@ const PeopleNavigation = ({
 					text="Previous"
 					onClick={handleChangePrevious}
 					disabled={!prevPage || isloading}
+					
 				/>
 			</Link>
 			<Link
@@ -49,6 +49,7 @@ PeopleNavigation.propTypes = {
 	nextPage: PropTypes.string,
 	prevPage: PropTypes.string,
 	getResource: PropTypes.func,
+	isloading: PropTypes.bool,
 };
 
 export default PeopleNavigation;

@@ -24,6 +24,7 @@ const PeoplePage = ({ setErrorApi }) => {
 	const queryPage = query.get("page");
 
 	const getResource = async (url) => {
+		console.log('gg')
 		setIsLoading(true);
 		const res = await getApiResource(url);
 		

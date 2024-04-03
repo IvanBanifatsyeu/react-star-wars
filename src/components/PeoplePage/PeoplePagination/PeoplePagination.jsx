@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import classnames from "classnames";
+import cn from "classnames";
+
 import styles from "./PeoplePagination.module.css";
 
-const PeoplePagination = ({ arrNumPages, getResource, counterPage }) => {
+const PeoplePagination = ({ arrNumPages, getResource, counterPage ,theme = "dark" }) => {
 	function handleClick(e) {
 		getResource(
 			`https://swapi.tech/api/people/?page=${+e.target.innerText}&limit=10`
@@ -20,10 +21,11 @@ const PeoplePagination = ({ arrNumPages, getResource, counterPage }) => {
 						to={`/people/?page=${num}&limit=10`}
 					>
 						<button
-							className={classnames(styles.pagination__button, {
+							className={cn(styles.pagination__button, {
 								[styles.pagination__button_active]: counterPage === num,
-							})}
+							}, styles[theme])}
 							onClick={handleClick}
+							disabled={counterPage === num}
 						>
 							{num}
 						</button>
@@ -34,8 +36,10 @@ const PeoplePagination = ({ arrNumPages, getResource, counterPage }) => {
 	);
 };
 
-// PeoplePagination.propTypes = {
-// //	test: PropTypes.string,
-// };
+ PeoplePagination.propTypes = {
+	arrNumPages: PropTypes.array,
+	getResource: PropTypes.func,
+	counterPage: PropTypes.number,
+ };
 
 export default PeoplePagination;

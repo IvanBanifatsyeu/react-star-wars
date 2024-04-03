@@ -1,5 +1,9 @@
+.container {
+display: flex;
+justify-content: center;
+}
 
 
 .link {
-	margin: 20px;
+	margin: var(--spacing-small)
 }
