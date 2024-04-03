@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { withErrorApi } from "@hoc/withErrorApi";
 import PeopleList from "@components/PeoplePage/PeopleList";
 import PeopleNavigation from "@components/PeoplePage/PeopleNavigation";
+import PeoplePagination from "@components/PeoplePage/PeoplePagination";
 import { getApiResource } from "@utils/network";
 import { getPeopleId, getPeopleImg } from "@services/getPeopleData";
 import { API_PEOPLE, SWAPI_PARAM_LIMIT } from "@constants/api";
@@ -13,16 +14,19 @@ import styles from "./PeoplePage.module.css";
 
 const PeoplePage = ({ setErrorApi }) => {
 	const [people, setPeople] = useState(null);
+	const [isloading, setIsLoading] = useState(false);
 	const [prevPage, setPrevPage] = useState(null);
 	const [nextPage, setNextPage] = useState(null);
 	const [counterPage, setCounterPage] = useState(1);
+	const [arrNumPages, setArrNumPages] = useState([]);
 
 	const query = useQueryParams();
 	const queryPage = query.get("page");
-	
 
 	const getResource = async (url) => {
+		setIsLoading(true);
 		const res = await getApiResource(url);
+		
 		if (res) {
 			const peopleList = res.results.map(({ name, url }) => {
 				const id = getPeopleId(url);
@@ -33,6 +37,14 @@ const PeoplePage = ({ setErrorApi }) => {
 			setPrevPage(res.previous);
 			setNextPage(res.next);
 			setErrorApi(false);
+			setIsLoading(false);
+			let i = 1;
+			let arr = [];
+			while (i <= res.total_pages) {
+				arr.push(i);
+				i++;
+			}
+			setArrNumPages(arr);
 		} else {
 			setErrorApi(true);
 		}
@@ -48,14 +60,15 @@ const PeoplePage = ({ setErrorApi }) => {
 
 	return (
 		<>
-			{console.log("rerend People", counterPage)}
 			<PeopleNavigation
 				getResource={getResource}
 				prevPage={prevPage}
 				nextPage={nextPage}
 				counterPage={counterPage}
+				isloading={isloading}
 			/>
 			{people && <PeopleList people={people} />}
+			<PeoplePagination arrNumPages={arrNumPages} getResource={getResource} counterPage={counterPage} />
 		</>
 	);
 };

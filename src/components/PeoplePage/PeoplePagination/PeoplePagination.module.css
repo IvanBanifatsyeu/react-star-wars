@@ -1,0 +1,26 @@
+.pagination__container {
+	display: flex;
+	justify-content: center;
+	margin-top: var(--spacing-large);
+}
+
+.pagination__link {
+	margin-right: var(--spacing-small);
+    
+}
+
+
+.pagination__button {
+    cursor:pointer;
+    border-radius: var(--border--radius-small);
+	padding: var(--spacing-small);
+    border: none;
+    transition: var(--transition);
+    font-size: var(--font-size-header);
+    background-color: #f0f0f0;
+}
+
+.pagination__button_active {
+    background-color: var(--color-light-gray);
+    color: var(--color-white);
+}

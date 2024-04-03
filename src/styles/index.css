@@ -1,11 +1,13 @@
 :root {
 	--color-dark-gray: #272725;
+	--color-light-gray: #777676;
 	--color-black: #000;
 	--color-white: #fff;
 	--color-yellow: #f8f401;
 	--color-blue: #6a83f3;
 	--color-violet: #ae72c2;
 
+	--spacing-small: 10px;
 	--spacing-medium: 20px;
 	--spacing-large: 30px;
 

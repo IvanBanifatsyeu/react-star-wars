@@ -1,8 +1,15 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import UiButton from "@UI/UiButton/UiButton";
 import styles from "./PeopleNavigation.module.css";
 
-const PeopleNavigation = ({ counterPage, nextPage, prevPage, getResource }) => {
+const PeopleNavigation = ({
+	counterPage,
+	nextPage,
+	prevPage,
+	getResource,
+	isloading,
+}) => {
 	const handleChangeNext = () => {
 		getResource(nextPage);
 	};
@@ -12,16 +19,26 @@ const PeopleNavigation = ({ counterPage, nextPage, prevPage, getResource }) => {
 
 	return (
 		<div>
-			{console.log("rerend Nav", counterPage)}
-			<Link to={`/people/?page=${counterPage - 1}&limit=10`} className={styles.link}>
-				<button onClick={handleChangePrevious} disabled={!prevPage} className={styles.button}>
-					Previous
-				</button>
+			
+			<Link
+				to={`/people/?page=${counterPage - 1}&limit=10`}
+				className={styles.link}
+			>
+				<UiButton
+					text="Previous"
+					onClick={handleChangePrevious}
+					disabled={!prevPage || isloading}
+				/>
 			</Link>
-			<Link to={`/people/?page=${counterPage + 1}&limit=10`} className={styles.link}>
-				<button onClick={handleChangeNext} disabled={!nextPage} className={styles.button}>
-					Next
-				</button>
+			<Link
+				to={`/people/?page=${counterPage + 1}&limit=10`}
+				className={styles.link}
+			>
+				<UiButton
+					text="Next"
+					onClick={handleChangeNext}
+					disabled={!nextPage || isloading}
+				/>
 			</Link>
 		</div>
 	);
