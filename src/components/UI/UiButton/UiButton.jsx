@@ -4,6 +4,8 @@ import "../index.css";
 import styles from "./UiButton.module.css";
 
 const UiButton = ({ text, onClick, disabled, theme = "dark", classes }) => {
+
+
 	return (
 		<button
 			onClick={onClick}

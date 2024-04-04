@@ -27,7 +27,7 @@ const PeopleNavigation = ({
 					text="Previous"
 					onClick={handleChangePrevious}
 					disabled={!prevPage || isloading}
-					
+					classes = 'styles.xx'
 				/>
 			</Link>
 			<Link

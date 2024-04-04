@@ -24,10 +24,9 @@ const PeoplePage = ({ setErrorApi }) => {
 	const queryPage = query.get("page");
 
 	const getResource = async (url) => {
-		console.log('gg')
 		setIsLoading(true);
 		const res = await getApiResource(url);
-		
+
 		if (res) {
 			const peopleList = res.results.map(({ name, url }) => {
 				const id = getPeopleId(url);
@@ -69,7 +68,11 @@ const PeoplePage = ({ setErrorApi }) => {
 				isloading={isloading}
 			/>
 			{people && <PeopleList people={people} />}
-			<PeoplePagination arrNumPages={arrNumPages} getResource={getResource} counterPage={counterPage} />
+			<PeoplePagination
+				arrNumPages={arrNumPages}
+				getResource={getResource}
+				counterPage={counterPage}
+			/>
 		</>
 	);
 };
