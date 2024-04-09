@@ -14,7 +14,7 @@ const App = () => {
 				<Routes>
 					{routesConfig.map((route, index) => {
 						return (
-							<Route key={index} path={route.path} element={route.element()} />
+							<Route key={index} path={route.path} element={<route.element />} />
 						);
 					})}
 				</Routes>

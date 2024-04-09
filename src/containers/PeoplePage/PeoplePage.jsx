@@ -24,6 +24,7 @@ const PeoplePage = ({ setErrorApi }) => {
 	const queryPage = query.get("page");
 
 	const getResource = async (url) => {
+		
 		setIsLoading(true);
 		const res = await getApiResource(url);
 
@@ -33,6 +34,7 @@ const PeoplePage = ({ setErrorApi }) => {
 				const urlImg = getPeopleImg(id);
 				return { name, url, id, urlImg };
 			});
+			
 			setPeople(peopleList);
 			setPrevPage(res.previous);
 			setNextPage(res.next);
@@ -45,6 +47,7 @@ const PeoplePage = ({ setErrorApi }) => {
 				i++;
 			}
 			setArrNumPages(arr);
+			
 		} else {
 			setErrorApi(true);
 		}
@@ -60,6 +63,7 @@ const PeoplePage = ({ setErrorApi }) => {
 
 	return (
 		<>
+		
 			<PeopleNavigation
 				getResource={getResource}
 				prevPage={prevPage}

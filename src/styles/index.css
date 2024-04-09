@@ -7,15 +7,19 @@
 	--color-blue: #6a83f3;
 	--color-violet: #ae72c2;
 
+	--spacing-ultrasmall: 5px;
 	--spacing-small: 10px;
 	--spacing-medium: 20px;
 	--spacing-large: 30px;
+
+	--margin-list: 7px;
 
 	--transition: 0.4s;
 
 	--font-family-main: sans-serif;
 
 	--border--radius-small: 3px;
+	--border--radius-medium: 5px;
 
 	--font-size-main: 16px;
 	--font-size-subheader: 18px;
