@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { getApiResource } from "@utils/network";
 import { API_PERSON } from "@constants/api";
 import { getPeopleImg } from "@services/getPeopleData";
+import PersonLinkBack from "@components/PersonPAge/PersonLinkBack";
 import PersonInfo from "@components/PersonPAge/PersonInfo";
 import PersonPhoto from "@components/PersonPAge/PersonPhoto/PersonPhoto";
 import styles from "./PersonPage.module.css";
@@ -41,11 +42,13 @@ const PersonPage = ({ setErrorApi }) => {
 
 	return (
 		<>
+			<PersonLinkBack />
 			<div className={styles.wrapper}>
 				<span className={styles.person__name}>{personName}</span>
-				<div className={styles.container}>{<PersonPhoto personPhoto={personPhoto} personName={personName} />}
-				{personInfo && <PersonInfo personInfo={personInfo} />}</div>
-				
+				<div className={styles.container}>
+					{<PersonPhoto personPhoto={personPhoto} personName={personName} />}
+					{personInfo && <PersonInfo personInfo={personInfo} />}
+				</div>
 			</div>
 		</>
 	);
