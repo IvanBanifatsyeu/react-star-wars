@@ -8,6 +8,7 @@ const config = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    "@storybook/addon-mdx-gfm"
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -15,7 +16,6 @@ const config = {
   },
   docs: {
     autodocs: "tag",
-    defaultName: 'Documentation',
   },
   staticDirs: ["..\\public"],
 };

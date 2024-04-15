@@ -1,20 +1,23 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { withErrorApi } from "@hoc/withErrorApi";
 import { useParams } from "react-router-dom";
 import { getApiResource } from "@utils/network";
-import { API_PERSON } from "@constants/api";
+import { API_PERSON, API_FILM } from "@constants/api";
 import { getPeopleImg } from "@services/getPeopleData";
 import PersonLinkBack from "@components/PersonPAge/PersonLinkBack";
 import PersonInfo from "@components/PersonPAge/PersonInfo";
 import PersonPhoto from "@components/PersonPAge/PersonPhoto/PersonPhoto";
+import UiLoading from "@UI/UiLoading";
 import styles from "./PersonPage.module.css";
 
-const PersonPage = ({ setErrorApi }) => {
+const PersonFilms = lazy(() => import("@components/PersonPAge/PersonFilms"));
+const PersonPage = ({ setErrorApi, arrFood }) => {
 	const { id } = useParams();
 	const [personInfo, setPersonInfo] = useState(null);
 	const [personName, setPersonName] = useState(null);
 	const [personPhoto, setPersonPhoto] = useState(null);
+	const [personFilms, setPersonFilms] = useState(null);
 
 	useEffect(() => {
 		(async () => {
@@ -40,6 +43,25 @@ const PersonPage = ({ setErrorApi }) => {
 		})();
 	}, []);
 
+	useEffect(() => {
+		(async () => {
+			const resFilms = await getApiResource(API_FILM);
+
+			const filmsThisCharacter = resFilms.result
+				.map((item) => {
+					if (
+						item.properties.characters.includes(
+							`https://www.swapi.tech/api/people/${id}`
+						)
+					) {
+						return { title: item.properties.title, episode: item.uid };
+					}
+				})
+				.filter((item) => !!item);
+			setPersonFilms(filmsThisCharacter);
+		})();
+	}, []);
+
 	return (
 		<>
 			<PersonLinkBack />
@@ -48,6 +70,11 @@ const PersonPage = ({ setErrorApi }) => {
 				<div className={styles.container}>
 					{<PersonPhoto personPhoto={personPhoto} personName={personName} />}
 					{personInfo && <PersonInfo personInfo={personInfo} />}
+					{personFilms && (
+						<Suspense fallback={<UiLoading />}>
+							<PersonFilms personFilms={personFilms} />
+						</Suspense>
+					)}
 				</div>
 			</div>
 		</>
