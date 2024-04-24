@@ -12,7 +12,7 @@ import UiLoading from "@UI/UiLoading";
 import styles from "./PersonPage.module.css";
 
 const PersonFilms = lazy(() => import("@components/PersonPAge/PersonFilms"));
-const PersonPage = ({ setErrorApi, arrFood }) => {
+const PersonPage = ({ setErrorApi}) => {
 	const { id } = useParams();
 	const [personInfo, setPersonInfo] = useState(null);
 	const [personName, setPersonName] = useState(null);
@@ -68,7 +68,7 @@ const PersonPage = ({ setErrorApi, arrFood }) => {
 			<div className={styles.wrapper}>
 				<span className={styles.person__name}>{personName}</span>
 				<div className={styles.container}>
-					{<PersonPhoto personPhoto={personPhoto} personName={personName} />}
+					{<PersonPhoto personPhoto={personPhoto} personName={personName} personId={id} />}
 					{personInfo && <PersonInfo personInfo={personInfo} />}
 					{personFilms && (
 						<Suspense fallback={<UiLoading />}>

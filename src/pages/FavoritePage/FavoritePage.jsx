@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const FavoritePage = () => {
      const storeData = useSelector(state => state.favoriteReducer)
-     return <><h2>{storeData}</h2></>
+     return <><h2>ky ky</h2></>
 };
 
 
