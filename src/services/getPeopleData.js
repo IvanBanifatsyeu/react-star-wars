@@ -2,7 +2,6 @@ import {
 	SWAPI_PEOPLE,
 	URL_IMG_PERSON,
 	GUIDE_IMG_EXTENSION,
-	SWAPI_PARAM_PAGE,
 } from "@constants/api";
 
 const getId = (url, category) => {

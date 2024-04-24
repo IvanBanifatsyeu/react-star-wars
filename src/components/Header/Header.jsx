@@ -15,6 +15,9 @@ const Header = () => {
 				<li>
 					<NavLink to="/not-found">Not Found</NavLink>
 				</li>
+				<li>
+					<NavLink to="/favorite">Favorite</NavLink>
+				</li>
 			</ul>
 		</div>
 	);

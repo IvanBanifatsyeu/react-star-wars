@@ -3,7 +3,9 @@ import {
 	REMOVE_PERSON_TO_FAVORITE,
 } from "@store/constants/actionTypes";
 
-const favoriteReducer = (state= {x:3}, action) => {
+const initialState = 'hello ben'
+
+const favoriteReducer = (state= initialState, action) => {
 	switch (action.type) {
 		case ADD_PERSON_TO_FAVORITE:
 			return {

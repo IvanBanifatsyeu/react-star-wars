@@ -5,6 +5,7 @@
  font-weight: var(--font-bold);
  color: var(--color-yellow);
  text-decoration: none;
+ cursor: pointer;
 }
 
 .link__img {

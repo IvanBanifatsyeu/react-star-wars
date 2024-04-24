@@ -10,7 +10,7 @@ const history = useNavigate()
 	};
 
 	return (
-		<a className={styles.link} href="#" onClick={handleGoBack}>
+		<a href className={styles.link} onClick={handleGoBack}>
 			<img className={styles.link__img} src={iconBack} alt="go back" />
 			<span >Go back</span>
 		</a>
