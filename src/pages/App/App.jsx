@@ -7,7 +7,7 @@ import styles from "./App.module.css";
 
 const App = () => {
 
-
+	
 	return (
 		<>
 			<div className={styles.wrapper}>
@@ -16,7 +16,11 @@ const App = () => {
 				<Routes>
 					{routesConfig.map((route, index) => {
 						return (
-							<Route key={index} path={route.path} element={<route.element />} />
+							<Route
+								key={index}
+								path={route.path}
+								element={<route.element />}
+							/>
 						);
 					})}
 				</Routes>

@@ -1,28 +1,36 @@
-import PropTypes from "prop-types";
-import { useEffect, useState, lazy, Suspense } from "react";
-import { withErrorApi } from "@hoc/withErrorApi";
-import { useParams } from "react-router-dom";
-import { getApiResource } from "@utils/network";
-import { API_PERSON, API_FILM } from "@constants/api";
-import { getPeopleImg } from "@services/getPeopleData";
-import PersonLinkBack from "@components/PersonPAge/PersonLinkBack";
-import PersonInfo from "@components/PersonPAge/PersonInfo";
-import PersonPhoto from "@components/PersonPAge/PersonPhoto/PersonPhoto";
 import UiLoading from "@UI/UiLoading";
+import PersonInfo from "@components/PersonPAge/PersonInfo";
+import PersonLinkBack from "@components/PersonPAge/PersonLinkBack";
+import PersonPhoto from "@components/PersonPAge/PersonPhoto/PersonPhoto";
+import { API_FILM, API_PERSON } from "@constants/api";
+import { withErrorApi } from "@hoc/withErrorApi";
+import { getPeopleImg } from "@services/getPeopleData";
+import { getApiResource } from "@utils/network";
+import PropTypes from "prop-types";
+import { Suspense, lazy, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import styles from "./PersonPage.module.css";
 
 const PersonFilms = lazy(() => import("@components/PersonPAge/PersonFilms"));
-const PersonPage = ({ setErrorApi}) => {
+
+const PersonPage = ({ setErrorApi }) => {
 	const { id } = useParams();
 	const [personInfo, setPersonInfo] = useState(null);
 	const [personName, setPersonName] = useState(null);
 	const [personPhoto, setPersonPhoto] = useState(null);
 	const [personFilms, setPersonFilms] = useState(null);
+	const [personFavorite, setPersonFavorite] = useState(false);
+
+	const StoreData = useSelector((state) => state.favoriteReducer);
+
+	useEffect(() => {
+		StoreData[id] ? setPersonFavorite(true) : setPersonFavorite(false);
+	}, [personFavorite]);
 
 	useEffect(() => {
 		(async () => {
 			const res = await getApiResource(API_PERSON + `/${id}`);
-
 			const personData = res.result.properties;
 			if (res) {
 				setPersonInfo([
@@ -68,7 +76,15 @@ const PersonPage = ({ setErrorApi}) => {
 			<div className={styles.wrapper}>
 				<span className={styles.person__name}>{personName}</span>
 				<div className={styles.container}>
-					{<PersonPhoto personPhoto={personPhoto} personName={personName} personId={id} />}
+					{
+						<PersonPhoto
+							personPhoto={personPhoto}
+							personName={personName}
+							personId={id}
+							personFavorite={personFavorite}
+							setPersonFavorite={setPersonFavorite}
+						/>
+					}
 					{personInfo && <PersonInfo personInfo={personInfo} />}
 					{personFilms && (
 						<Suspense fallback={<UiLoading />}>

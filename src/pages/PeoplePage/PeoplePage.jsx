@@ -1,16 +1,14 @@
-import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
-import { withErrorApi } from "@hoc/withErrorApi";
 import PeopleList from "@components/PeoplePage/PeopleList";
 import PeopleNavigation from "@components/PeoplePage/PeopleNavigation";
 import PeoplePagination from "@components/PeoplePage/PeoplePagination";
-import { getApiResource } from "@utils/network";
-import { getPeopleId, getPeopleImg } from "@services/getPeopleData";
 import { API_PEOPLE, SWAPI_PARAM_LIMIT } from "@constants/api";
+import { withErrorApi } from "@hoc/withErrorApi";
 import { useQueryParams } from "@hooks/useQueryParams";
-
-import styles from "./PeoplePage.module.css";
+import { getPeopleId, getPeopleImg } from "@services/getPeopleData";
+import { getApiResource } from "@utils/network";
 
 const PeoplePage = ({ setErrorApi }) => {
 	const [people, setPeople] = useState(null);
@@ -24,8 +22,6 @@ const PeoplePage = ({ setErrorApi }) => {
 	const queryPage = query.get("page");
 
 	const getResource = async (url) => {
-	
-	
 		const res = await getApiResource(url);
 
 		if (res) {
@@ -34,7 +30,7 @@ const PeoplePage = ({ setErrorApi }) => {
 				const urlImg = getPeopleImg(id);
 				return { name, url, id, urlImg };
 			});
-			
+
 			setPeople(peopleList);
 			setPrevPage(res.previous);
 			setNextPage(res.next);
@@ -47,7 +43,6 @@ const PeoplePage = ({ setErrorApi }) => {
 				i++;
 			}
 			setArrNumPages(arr);
-			
 		} else {
 			setErrorApi(true);
 		}
@@ -63,7 +58,6 @@ const PeoplePage = ({ setErrorApi }) => {
 
 	return (
 		<>
-		
 			<PeopleNavigation
 				getResource={getResource}
 				prevPage={prevPage}
