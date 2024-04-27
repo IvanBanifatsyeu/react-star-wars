@@ -1,13 +1,15 @@
+import Header from "@components/Header/Header";
+import routesConfig from "@routes/routesConfig";
 import { Route, Routes } from "react-router-dom";
 
-import routesConfig from "@routes/routesConfig";
-import Header from "@components/Header/Header";
-
+import React from "react";
 import styles from "./App.module.css";
+
+
 
 const App = () => {
 
-	
+
 	return (
 		<>
 			<div className={styles.wrapper}>

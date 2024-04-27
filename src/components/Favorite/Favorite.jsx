@@ -1,18 +1,16 @@
+import _ from "lodash";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Favorite.module.css";
 import FavoriteIcon from "./img/bookmark.svg";
-import { useSelector } from "react-redux";
-import _ from 'lodash'
 
 const Favorite = () => {
-   const counterFav =  useSelector(store => store.favoriteReducer
-   )
-   console.log(_.size)
-
+	const counterFav = useSelector((store) => store.favoriteReducer);
+    const counter =  _.size(counterFav).toString().length > 2 ? '...' : _.size(counterFav)
 	return (
-		<div>
+		<div className={styles.container}>
 			<Link to="/favorite">
-                <span className={styles.counter}>{_.size(counterFav)}</span>
+				<span className={styles.counter}>{counter}</span>
 				<img className={styles.icon} src={FavoriteIcon} alt="FavoriteIcon" />
 			</Link>
 		</div>

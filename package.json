@@ -63,8 +63,9 @@
     "eslint-plugin-storybook": "^0.8.0",
     "react-app-rewire-alias": "^1.1.7",
     "react-app-rewired": "^2.2.1",
+    "react-tv": "^0.4.3",
+    "react-vt": "^0.1.1",
     "storybook": "^8.0.8",
     "webpack": "^5.91.0"
   }
-
 }
