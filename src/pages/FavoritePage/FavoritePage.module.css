@@ -1,3 +1,22 @@
 .comment {
     color: var(--color-white);
 }
+
+.removeAllFav {
+    cursor: pointer;
+	border-radius: var(--border--radius-medium);
+	padding: var(--spacing-small);
+	transition: var(--transition);
+	font-size: var(--font-size-header);
+	background-color: transparent;
+    border: 1px solid var(--color-white);
+	color: var(--color-white);
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 0 4px  white;
+}
+
+.removeAllFav:hover {
+    color: var(--color-black);
+	background-color: var(--color-white);
+}
