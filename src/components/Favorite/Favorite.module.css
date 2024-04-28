@@ -7,13 +7,19 @@
     flex-shrink: 0;
 }
 
+
 .icon {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
     filter: drop-shadow(0 0 2px rgb(255, 255, 255));
+    
+}
 
+.container :global(a.active) .icon {
+    filter: drop-shadow(0 0 5px var(--color-violet));
+    
 }
 
 .counter {
@@ -35,4 +41,8 @@
     z-index: 1;
 }
 
+.container :global(a.active) .counter {
+    filter: drop-shadow(0 0 5px var(--color-violet));
+    
+}
 

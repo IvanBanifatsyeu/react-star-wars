@@ -1,8 +1,16 @@
-import { legacy_createStore as createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
-import rootReducer from './reducers'
-import {logger} from '@store/middleware/logger'
+import { logger } from "@store/middleware/logger";
+import { setLocalStprage } from "@utils/localStore";
+import { applyMiddleware, legacy_createStore as createStore } from "redux";
+import rootReducer from "./reducers";
 
-const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(logger) ))
+const store = createStore(
+	rootReducer,
+	composeWithDevTools(applyMiddleware(logger))
+);
+
+store.subscribe(() => {
+	setLocalStprage("store", store.getState().favoriteReducer);
+});
 
 export default store;
