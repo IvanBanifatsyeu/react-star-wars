@@ -1,12 +1,14 @@
-import { NavLink } from "react-router-dom";
 
-import styles from "./HomePage.module.css";
+import ChosseSide from "@components/HomePage/ChosseSide/ChosseSide";
+
 
 const HomePage = () => {
+    
+	  
 	return (
 		<>
 			<h1 className="header__text">Home page</h1>
-           
+			<ChosseSide />
 		</>
 	);
 };
