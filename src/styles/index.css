@@ -29,11 +29,19 @@
 
 	--width-max: 1200px;
 
-	--text-shadow-yeallow: 0 0 2px var(--color-white), 0 0 30px var(--color-yellow);
+	--text-shadow-yeallow: 0 0 2px var(--color-white),
+		0 0 30px var(--color-yellow);
 	--text-shadow-blue: 0 0 2px var(--color-white), 0 0 30px var(--color-blue);
+	/* Themes */
+	--theme-light-header: #353232;
+	--theme-dark-header: #f5f5f5;
+	--theme-neitral-header: #fccd67;
+    --theme-default-header: var(--theme-neitral-header);
 
-	--theme-default-header: #cccc46;
-	--theme-default-bdimage: url(@static/bd.jpg);
+	--theme-light-bdimage: url(@static/bd_light.jpg);
+	--theme-dark-bdimage: url(@static/bd_dark.jpg);
+	--theme-neitral-bdimage:  url(@static/bd.jpg);
+	--theme-default-bdimage: var(--theme-neitral-bdimage);
 }
 body {
 	margin: 0;
@@ -45,7 +53,7 @@ body {
 	background-image: var(--theme-default-bdimage);
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-position: center;
+	background-position: center center;
 	background-attachment: fixed;
 }
 

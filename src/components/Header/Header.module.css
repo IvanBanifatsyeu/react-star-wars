@@ -29,7 +29,7 @@
 	text-decoration: none;
 	padding: 7px 10px;
 	min-width: 70px;
-	color: var(--color-white);
+	color: var(--theme-default-header);
 	text-align: center;
 	font-weight: var(--font-bold);
 	font-family: var(--font-family-main);
