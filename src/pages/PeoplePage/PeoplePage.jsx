@@ -55,7 +55,6 @@ const PeoplePage = ({ setErrorApi }) => {
 	useEffect(() => {
 		setCounterPage(Number(queryPage));
 	}, [queryPage]);
-
 	return (
 		<>
 			<PeopleNavigation

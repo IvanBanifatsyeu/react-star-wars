@@ -2,7 +2,8 @@ import { THEME_LIGHT, THEME_DARK, THEME_NEITRAL , useTheme } from "@context/Them
 
 const ChosseSide = () => {
 	const isTheme = useTheme();
-	console.log(isTheme);
+	
+   console.log('ren choose')
 
 	return (
 		<>
