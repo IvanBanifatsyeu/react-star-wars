@@ -7,14 +7,15 @@ import icon_dark from "./img/icon-dark.svg";
 import icon_light from "./img/icon-light.svg";
 
 const Header = () => {
-	const themeApp = useTheme().theme;
+	let themeApp = useTheme().theme;
+	console.log(themeApp)
+	if (typeof themeApp !== 'string') {themeApp = 'neitral'}
 	const themeList = {
 		icon_neitral,
 		icon_dark,
 		icon_light,
 	}
-	
-	console.log('ren header')
+
 
 	return (
 		<div className={styles.container}>
