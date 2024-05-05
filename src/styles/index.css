@@ -29,13 +29,18 @@
 
 	--width-max: 1200px;
 
-	--text-shadow-yeallow: 0 0 2px var(--color-white),
+	--text-shadow-yeallow: 0 0 5px var(--color-white),
 		0 0 30px var(--color-yellow);
 	--text-shadow-blue: 0 0 2px var(--color-white), 0 0 30px var(--color-blue);
+	--text-shadow-black: 0 0 2px var(--color-black);
+	
+
+
+
 	/* Themes */
-	--theme-light-header: #353232;
+	--theme-light-header: #030303;
 	--theme-dark-header: #f5f5f5;
-	--theme-neitral-header: #fccd67;
+	--theme-neitral-header: #ffbb00;
     --theme-default-header: var(--theme-neitral-header);
 
 	--theme-light-bdimage: url(@static/bd_light.jpg);
