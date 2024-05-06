@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import styles from "./SearchPage.module.css";
+import { debounce } from "lodash";
 import { getApiResource } from "@utils/network";
 import { API_SEARCH, INITIAL_ARR_SEARCH } from "@constants/api";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { withErrorApi } from "@hoc/withErrorApi";
 import { getPeopleId, getPeopleImg } from "@services/getPeopleData";
 import SearchPageInfo from "@components/SearchPage/SearchPageInfo";
@@ -10,9 +11,9 @@ import SearchPageInfo from "@components/SearchPage/SearchPageInfo";
 const SearchPage = ({ setErrorApi }) => {
 	const [inputSearchValue, setInputSearchValue] = useState("");
 	const [people, setPeople] = useState(INITIAL_ARR_SEARCH);
-
 	const getResponse = async (param) => {
-		const paramTrim = param.trimStart()
+		console.log("getRes", param);
+		const paramTrim = param.trimStart();
 		const res = await getApiResource(API_SEARCH + paramTrim);
 
 		if (res.result) {
@@ -28,12 +29,22 @@ const SearchPage = ({ setErrorApi }) => {
 		}
 	};
 
+	const debouncedGetResponse = useCallback(
+		debounce((val) => {
+			getResponse(val);
+		}, 300),
+		[]
+	);
 
 	const handleInputChange = (e) => {
 		const valueInput = e.target.value;
 		setInputSearchValue(valueInput);
-		if(valueInput.trimStart().length > 0) {getResponse(valueInput.trimStart());}
-		
+		if (valueInput.trimStart().length > 0) {
+			debouncedGetResponse(valueInput.trimStart());
+		}
+		if (valueInput.trimStart().length === 0) {
+			setPeople(INITIAL_ARR_SEARCH);
+		}
 	};
 
 	return (

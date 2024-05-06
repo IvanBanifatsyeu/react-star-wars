@@ -7,6 +7,7 @@
 
 .list__item {
     margin-bottom: var(--spacing-medium);
+    background-color: rgba(121, 116, 116, 0.473);
 }
 
 .list__item a {
