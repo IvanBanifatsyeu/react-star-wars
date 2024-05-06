@@ -1,6 +1,6 @@
+import "../index.css";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import "../index.css";
 import styles from "./UiButton.module.css";
 
 const UiButton = ({ text, onClick, disabled, theme = "dark", classes }) => {

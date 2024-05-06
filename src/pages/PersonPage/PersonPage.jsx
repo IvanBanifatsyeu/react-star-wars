@@ -1,7 +1,7 @@
 import UiLoading from "@UI/UiLoading";
-import PersonInfo from "@components/PersonPAge/PersonInfo";
-import PersonLinkBack from "@components/PersonPAge/PersonLinkBack";
-import PersonPhoto from "@components/PersonPAge/PersonPhoto/PersonPhoto";
+import PersonInfo from "@components/PersonPage/PersonInfo";
+import PersonLinkBack from "@components/PersonPage/PersonLinkBack";
+import PersonPhoto from "@components/PersonPage/PersonPhoto/PersonPhoto";
 import { API_FILM, API_PERSON } from "@constants/api";
 import { withErrorApi } from "@hoc/withErrorApi";
 import { getPeopleImg } from "@services/getPeopleData";
@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./PersonPage.module.css";
 
-const PersonFilms = lazy(() => import("@components/PersonPAge/PersonFilms"));
+const PersonFilms = lazy(() => import("@components/PersonPage/PersonFilms"));
 
 const PersonPage = ({ setErrorApi }) => {
 	const { id } = useParams();
@@ -21,6 +21,7 @@ const PersonPage = ({ setErrorApi }) => {
 	const [personPhoto, setPersonPhoto] = useState(null);
 	const [personFilms, setPersonFilms] = useState(null);
 	const [personFavorite, setPersonFavorite] = useState(false);
+	const [isReady, setIsReady] = useState(false)
 
 	const StoreData = useSelector((state) => state.favoriteReducer);
 
@@ -45,6 +46,7 @@ const PersonPage = ({ setErrorApi }) => {
 				setPersonName(personData.name);
 				setPersonPhoto(getPeopleImg(id));
 				setErrorApi(false);
+				setIsReady(true)
 			} else {
 				setErrorApi(true);
 			}
@@ -83,6 +85,7 @@ const PersonPage = ({ setErrorApi }) => {
 							personId={id}
 							personFavorite={personFavorite}
 							setPersonFavorite={setPersonFavorite}
+							isReady={isReady}
 						/>
 					}
 					{personInfo && <PersonInfo personInfo={personInfo} />}

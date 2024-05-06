@@ -7,12 +7,12 @@ import { useCallback, useState } from "react";
 import { withErrorApi } from "@hoc/withErrorApi";
 import { getPeopleId, getPeopleImg } from "@services/getPeopleData";
 import SearchPageInfo from "@components/SearchPage/SearchPageInfo";
+import UiInput from "@UI/UiInput/UiInput";
 
 const SearchPage = ({ setErrorApi }) => {
 	const [inputSearchValue, setInputSearchValue] = useState("");
 	const [people, setPeople] = useState(INITIAL_ARR_SEARCH);
 	const getResponse = async (param) => {
-		console.log("getRes", param);
 		const paramTrim = param.trimStart();
 		const res = await getApiResource(API_SEARCH + paramTrim);
 
@@ -36,13 +36,13 @@ const SearchPage = ({ setErrorApi }) => {
 		[]
 	);
 
-	const handleInputChange = (e) => {
-		const valueInput = e.target.value;
-		setInputSearchValue(valueInput);
-		if (valueInput.trimStart().length > 0) {
-			debouncedGetResponse(valueInput.trimStart());
+	const handleInputChange = (value) => {
+		
+		setInputSearchValue(value);
+		if (value.trimStart().length > 0) {
+			debouncedGetResponse(value.trimStart());
 		}
-		if (valueInput.trimStart().length === 0) {
+		if (value.trimStart().length === 0) {
 			setPeople(INITIAL_ARR_SEARCH);
 		}
 	};
@@ -50,12 +50,14 @@ const SearchPage = ({ setErrorApi }) => {
 	return (
 		<>
 			<h1 className="header__text">Search </h1>
-			<input
-				type="text"
+
+			<UiInput
 				value={inputSearchValue}
-				onChange={handleInputChange}
+				handleInputChange={handleInputChange}
 				placeholder="Input character's name"
+				classes={styles.input__search}
 			/>
+
 			<SearchPageInfo people={people} />
 		</>
 	);

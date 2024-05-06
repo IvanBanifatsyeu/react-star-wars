@@ -34,6 +34,7 @@
 	padding: 0 var(--spacing-small);
     color: var(--color-white);
     text-shadow: var(--text-shadow-black);
+	font-weight: bold;
 }
 
 .person__comment {

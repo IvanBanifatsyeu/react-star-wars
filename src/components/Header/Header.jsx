@@ -7,7 +7,7 @@ import icon_dark from "./img/icon-dark.svg";
 import icon_light from "./img/icon-light.svg";
 
 const Header = () => {
-	const  themeApp = useTheme().theme;
+	let  themeApp = useTheme().theme;
 
 	if (typeof themeApp !== "string") {
 		themeApp = "neitral";

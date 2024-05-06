@@ -11,6 +11,7 @@ const PersonPhoto = ({
 	personId,
 	setPersonFavorite,
 	personFavorite,
+	isReady,
 }) => {
 	const dispatch = useDispatch();
 
@@ -35,12 +36,13 @@ const PersonPhoto = ({
 		<div className={styles.wrapper}>
 			<div className={styles.container}>
 				<img className={styles.photo} src={personPhoto} alt={personName} />
-			<img
-				className={styles.fav}
-				src={personFavorite ? favorite_true : favorite_false}
-				onClick={dispatchFavor}
-				alt="favorite-icon"
-			/>
+				<img
+					className={styles.fav}
+					src={personFavorite ? favorite_true : favorite_false}
+					onClick={dispatchFavor}
+					alt="favorite-icon"
+					style={{ display: isReady ? "block" : "none" }}
+				/>
 			</div>
 		</div>
 	);
