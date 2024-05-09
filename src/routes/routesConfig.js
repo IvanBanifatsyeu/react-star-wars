@@ -4,6 +4,7 @@ import NotFoundPage from "@pages/NotFoundPage";
 import PersonPage from "@pages/PersonPage";
 import FavoritePage from "@pages/FavoritePage/FavoritePage";
 import SearchPage from "@pages/SearchPage/SearchPage";
+import TopViewsPage from "@pages/TopViewsPage";
 
  const routesConfig = [
 	{
@@ -25,6 +26,10 @@ import SearchPage from "@pages/SearchPage/SearchPage";
 	{
 		path: "/search",
 		element: SearchPage,
+	},
+	{
+		path: "/views",
+		element: TopViewsPage,
 	},
 	{
 		path: "*",

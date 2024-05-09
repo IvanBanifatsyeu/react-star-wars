@@ -2,6 +2,7 @@ import UiLoading from "@UI/UiLoading";
 import PersonInfo from "@components/PersonPage/PersonInfo";
 import PersonLinkBack from "@components/PersonPage/PersonLinkBack";
 import PersonPhoto from "@components/PersonPage/PersonPhoto/PersonPhoto";
+import PersonViewCounter from "@components/PersonPage/PersonViewCounter";
 import { API_FILM, API_PERSON } from "@constants/api";
 import { withErrorApi } from "@hoc/withErrorApi";
 import { getPeopleImg } from "@services/getPeopleData";
@@ -21,7 +22,7 @@ const PersonPage = ({ setErrorApi }) => {
 	const [personPhoto, setPersonPhoto] = useState(null);
 	const [personFilms, setPersonFilms] = useState(null);
 	const [personFavorite, setPersonFavorite] = useState(false);
-	const [isReady, setIsReady] = useState(false)
+	const [isReady, setIsReady] = useState(false);
 
 	const StoreData = useSelector((state) => state.favoriteReducer);
 
@@ -46,7 +47,7 @@ const PersonPage = ({ setErrorApi }) => {
 				setPersonName(personData.name);
 				setPersonPhoto(getPeopleImg(id));
 				setErrorApi(false);
-				setIsReady(true)
+				setIsReady(true);
 			} else {
 				setErrorApi(true);
 			}
@@ -76,7 +77,14 @@ const PersonPage = ({ setErrorApi }) => {
 		<>
 			<PersonLinkBack />
 			<div className={styles.wrapper}>
-				<span className={styles.person__name}>{personName}</span>
+				<div className={styles.name__container}>
+					<span className={styles.person__name}>{personName}</span>
+					{personPhoto && personName && <PersonViewCounter
+						personPhoto={personPhoto}
+						personName={personName}
+						personId={id}
+					/>}
+				</div>
 				<div className={styles.container}>
 					{
 						<PersonPhoto

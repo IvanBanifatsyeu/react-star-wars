@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { changeCssVAriables } from "@services/changeCssVariables";
-import { setLocalStprage, getLocalStorage } from "@utils/localStore";
+import { setLocalStorage, getLocalStorage } from "@utils/localStore";
 
 export const THEME_LIGHT = "light";
 export const THEME_DARK = "dark";
@@ -17,7 +17,7 @@ const ThemeProvider = ({ children, ...props }) => {
 	const change = (name) => {
 		setTheme(name);
 		changeCssVAriables(name);
-		setLocalStprage("theme", name);
+		setLocalStorage("theme", name);
 	};
 
 	return (
