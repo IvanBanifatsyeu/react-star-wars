@@ -5,6 +5,7 @@ import PersonPage from "@pages/PersonPage";
 import FavoritePage from "@pages/FavoritePage/FavoritePage";
 import SearchPage from "@pages/SearchPage/SearchPage";
 import TopViewsPage from "@pages/TopViewsPage";
+import ErrorMessage from '@components/ErrorMessage/ErrorMessage'
 
  const routesConfig = [
 	{
@@ -30,6 +31,10 @@ import TopViewsPage from "@pages/TopViewsPage";
 	{
 		path: "/views",
 		element: TopViewsPage,
+	},
+	{
+		path: "/fail",
+		element: ErrorMessage,
 	},
 	{
 		path: "*",

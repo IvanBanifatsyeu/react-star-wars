@@ -1,5 +1,5 @@
 .text {
-    color: var(--color-yellow);
+    color: var(--theme-default-header);
     width: 600px;
     margin: auto;
     margin-top: 100px;
@@ -7,7 +7,14 @@
     text-align: center;
     text-shadow: 0 0 5px var(--color-white);
     font-size: var(--font-size-header);
-    -webkit-text-stroke-color: var(--color-yellow);
-    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: var(--theme-default-header);
+    -webkit-text-stroke-width: 2px;
     -webkit-text-fill-color: transparent;
+}
+
+.video {
+    display: block;
+    margin: var(--spacing-large) auto 0 auto;
+    border-radius: var(--border--radius-medium);
+    box-shadow: 0 0 8px var(--theme-default-header) ;
 }
