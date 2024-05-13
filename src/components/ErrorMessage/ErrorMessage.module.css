@@ -17,4 +17,29 @@
     margin: var(--spacing-large) auto 0 auto;
     border-radius: var(--border--radius-medium);
     box-shadow: 0 0 8px var(--theme-default-header) ;
+  
+}
+
+@media screen and (max-width: 650px) {
+    .video {
+        width: 300px;
+        
+    }
+    .text {
+        width: 300px;
+        font-size: 16px;
+        -webkit-text-stroke-width: 1px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .video {
+        width: 200px;
+        
+    }
+    .text {
+        width: 200px;
+        font-size: 12px;
+        -webkit-text-stroke-width: 1px;
+    }
 }

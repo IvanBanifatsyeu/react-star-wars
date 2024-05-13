@@ -3,7 +3,7 @@
 	padding: 0;
 	list-style: none;
 	column-count: 3;
-	line-height: 0;
+	line-height: 1;
 }
 
 .list__item {
@@ -33,13 +33,18 @@
 }
 
 .person__name {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	margin: 0;
 	padding: 0 var(--spacing-small);
 	color: var(--color-white);
 	text-shadow: var(--text-shadow-black);
 	font-weight: bold;
+	
+
+
+ 
+	
 }
 
 .person__comment {
@@ -57,5 +62,11 @@
 	.person__photo {
 		width: 121.6px;
 		height: 166.4px;
+	}
+}
+
+@media screen and (max-width: 560px) {
+	.list__container {
+		column-count: 1;
 	}
 }
