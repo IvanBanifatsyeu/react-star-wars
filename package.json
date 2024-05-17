@@ -1,7 +1,7 @@
 {
   "name": "react-star-wars",
   "version": "0.1.0",
-  "homepage": "https://ivanbanifatsyeu.github.io",
+  "homepage": "https://ivanbanifatsyeu.github.io/react-star-wars/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -23,11 +23,13 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
+    "deploy": "npm run build && npm run build-gh-pages",
     "build": "react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "build-gh-pages": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +64,7 @@
     "@storybook/react-webpack5": "^8.0.10",
     "@storybook/test": "^8.0.10",
     "eslint-plugin-storybook": "^0.8.0",
+    "gh-pages": "^6.1.1",
     "react-app-rewire-alias": "^1.1.7",
     "react-app-rewired": "^2.2.1",
     "react-tv": "^0.4.3",

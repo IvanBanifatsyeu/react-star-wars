@@ -6,7 +6,7 @@ const ErrorMessage = () => {
 	return (
 		<>
 			<p className={styles.text}>
-				The dark side of the force has won.<br />  We cannot display data.<br /> Come back
+				The dark side of the force has won!!<br />  We cannot display data.<br /> Come back
 				when we fix everything<br />
 			</p>
 			<UiVideo scr={video} classes={styles.video} playbackRate={0.5}/>
